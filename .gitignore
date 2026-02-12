@@ -1,0 +1,28 @@
+# IntelliJ IDEA project files
+.idea/
+*.iml
+out/
+build/
+workspace.xml
+shelf/
+queries/
+dataSources/
+dataSources.local.xml
+httpRequests/
+
+# Compiled Java class files
+*.class
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Large reference PDF - Using wildcard to avoid space issues
+*Striver*A2Z*Full*Notes*.pdf
+
+# Allow the specific .gitignore inside .idea if you really want it
+!.idea/.gitignore
