@@ -123,6 +123,6 @@ This repository is for personal learning and documentation purposes.
 
 ---
 
-**Last Updated:** [Current Date]
+**Last Updated:** [DD/MM/YYYY]
 
 *"The only way to learn a new programming language is by writing programs in it." - Dennis Ritchie*
