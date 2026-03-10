@@ -83,3 +83,210 @@ void main() {
         System.out.println("Test " + (i+1) + ": Actual = " + result + ", Expected = " + expected[i]);
     }
 }
+//Great — this is a **classic interview follow-up**.
+//The interviewer asks:
+//
+//        > Can you check if a linked list is a palindrome **without reversing it**?
+//
+//The common answer uses **recursion**.
+//
+//But it’s important to understand **how recursion simulates moving from both ends**.
+//
+//        ---
+//
+//        # Core Idea
+//
+//A singly linked list cannot move backward.
+//
+//But recursion uses the **call stack** to reach the end of the list and then come back.
+//
+//So we can compare:
+//
+//        ```
+//first node  ↔ last node
+//second node ↔ second last node
+//...
+//        ```
+//
+//exactly like a palindrome check.
+//
+//---
+//
+//        # Visual Example
+//
+//List:
+//
+//        ```text
+//1 → 2 → 3 → 2 → 1
+//        ```
+//
+//We use two pointers:
+//
+//        ```
+//left  → head
+//right → recursion pointer
+//```
+//
+//        ---
+//
+//        # Step 1 — Go to the End with Recursion
+//
+//Call stack builds like this:
+//
+//        ```
+//check(1)
+//check(2)
+//check(3)
+//check(2)
+//check(1)
+//check(null)
+//```
+//
+//Now recursion **starts returning upward**.
+//
+//        ---
+//
+//        # Step 2 — Compare While Returning
+//
+//Stack unwinds:
+//
+//        ### Compare last and first
+//
+//```
+//left = 1
+//right = 1
+//        ```
+//
+//Move left forward.
+//
+//```
+//left → 2
+//        ```
+//
+//        ---
+//
+//        ### Compare second last and second
+//
+//```
+//left = 2
+//right = 2
+//        ```
+//
+//Move left forward.
+//
+//```
+//left → 3
+//        ```
+//
+//        ---
+//
+//        ### Compare middle
+//
+//```
+//left = 3
+//right = 3
+//        ```
+//
+//Still valid.
+//
+//Continue until stack ends.
+//
+//        ---
+//
+//        # Java Implementation
+//
+//```java
+//class Solution {
+//
+//    ListNode left;
+//
+//    public boolean isPalindrome(ListNode head) {
+//        left = head;
+//        return check(head);
+//    }
+//
+//    private boolean check(ListNode right) {
+//
+//        if (right == null) {
+//            return true;
+//        }
+//
+//        boolean result = check(right.next);
+//        if (!result) return false;
+//
+//        if (left.val != right.val) {
+//            return false;
+//        }
+//
+//        left = left.next;
+//
+//        return true;
+//    }
+//}
+//```
+//
+//        ---
+//
+//        # Why This Works
+//
+//The recursion moves `right` to the end.
+//
+//When the stack unwinds:
+//
+//        ```
+//left pointer moves forward
+//right pointer moves backward
+//```
+//
+//So we compare symmetric nodes.
+//
+//---
+//
+//        # Complexity
+//
+//Time:
+//
+//        ```
+//O(n)
+//```
+//
+//Space:
+//
+//        ```
+//O(n)  (recursion stack)
+//        ```
+//
+//        ---
+//
+//        # Comparison with the Reverse Method
+//
+//| Method              | Time | Space | Modifies List |
+//        | ------------------- | ---- | ----- | ------------- |
+//        | Reverse second half | O(n) | O(1)  | Yes           |
+//        | Recursion           | O(n) | O(n)  | No            |
+//
+//In interviews:
+//
+//        * Reverse method → **better space**
+//        * Recursion → **cleaner conceptually**
+//
+//        ---
+//
+//        # Important Insight
+//
+//This technique works because recursion provides **implicit backward traversal**.
+//
+//You cannot normally move backward in a singly linked list.
+//
+//        ---
+//
+//        # One Trick Interviewers Like to Ask
+//
+//Suppose the list has **10 million nodes**.
+//
+//Which solution is safer?
+//
+//        * Reverse method
+//* Recursive method
+//
+//Think about **stack overflow**.
