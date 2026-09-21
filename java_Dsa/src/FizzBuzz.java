@@ -1,6 +1,8 @@
+package src;
+
 import java.util.*;
 
-public class fizzBuzz {
+public class FizzBuzz {
     public static List<String> fizzBuzz(int n) {
         List<String> array = new ArrayList<>();
         for (int i = 1; i <= n; i++) {

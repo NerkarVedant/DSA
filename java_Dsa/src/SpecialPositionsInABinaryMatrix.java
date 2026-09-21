@@ -1,10 +1,10 @@
-class Solution {
+static class Solution {
     public int numSpecial(int[][] mat) {
 
-        int numberOfRows= mat.length;
-        int numberOfCol= mat[0].length;
+        int numberOfRows = mat.length;
+        int numberOfCol = mat[0].length;
 
-        int count=0;
+        int count = 0;
 
 
         //Brute force approach
@@ -45,7 +45,7 @@ class Solution {
         for (int i = 0; i < numberOfRows; i++) {
             for (int j = 0; j < numberOfCol; j++) {
 
-                if (mat[i][j]==1){
+                if (mat[i][j] == 1) {
                     rowSum[i]++;
                     colSum[j]++;
                 }
@@ -61,7 +61,7 @@ class Solution {
 
         //more optimized
         for (int i = 0; i < numberOfRows; i++) {
-            if (rowSum[i]==1){
+            if (rowSum[i] == 1) {
                 for (int j = 0; j < numberOfCol; j++) {
                     // Find the index of that single '1'
                     if (mat[i][j] == 1) {
@@ -78,8 +78,8 @@ class Solution {
         }
         return count;
     }
-
-    public static void main(String[] args) {
+}
+    static void main(String[] args) {
         Solution sol = new Solution();
         // Test case 1
         int[][] mat1 = {
@@ -112,4 +112,3 @@ class Solution {
         };
         System.out.println("Test 4 Output: " + sol.numSpecial(mat4) + " | Expected: 0");
     }
-}
