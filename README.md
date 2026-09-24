@@ -27,7 +27,7 @@ DSA/
 | Problem | Difficulty | Date Solved | Notes |
 |---|---|---|---|
 | Running Sum of 1D Array | Easy | 2026-03-05 | |
-| Move Zeroes | Easy | 2026-03-02 | |
+| Move Zeroes | Easy | 2026-03-02 | Revisited — compared brute force, two-pointer swap, and single-pass overwrite approaches |
 | Concatenation of Array | Easy | 2026-02-19 | |
 | Richest Customer Wealth | Easy | 2026-02-24 | |
 | Plus One | Easy | 2026-02-22 | |
